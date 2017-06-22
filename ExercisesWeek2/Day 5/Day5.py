@@ -4,6 +4,7 @@ import vtk
 reader = vtk.vtkXMLImageDataReader()
 reader.SetFileName("/Users/sebastiansanchez/IngenieriaSistemas/2017-18/Visual/Visualization/ExercisesWeek2/data/wind_image.vti")
 reader.Update()
+output = reader.GetOutput()
 
 # Convert the image to a polydata
 imageDataGeometryFilter = vtk.vtkImageDataGeometryFilter()
@@ -49,7 +50,7 @@ for i in range(0,tableSize):
 # Pass the streamlines to the mapper
 streamlineMapper = vtk.vtkPolyDataMapper()
 streamlineMapper.SetLookupTable(lut)
-streamlineMapper.SetInputConnection(streamline.GetOutputPort())
+streamlineMapper.SetInputConnection(contoursFilter.GetOutputPort())
 streamlineMapper.SetScalarVisibility(True)
 streamlineMapper.SetScalarModeToUsePointFieldData()
 streamlineMapper.SelectColorArray('vectors')
@@ -75,7 +76,7 @@ gOutlineActor.GetProperty().SetColor(0.5,0.5,0.5)
 renderer = vtk.vtkRenderer()
 renderer.SetBackground(0.0, 0.0, 0.0)
 renderer.AddActor(streamlineActor)
-renderer.AddActor(outlineActor)
+#renderer.AddActor(outlineActor)
 #renderer.AddActor(gOutlineActor)
 
 renderWindow = vtk.vtkRenderWindow()

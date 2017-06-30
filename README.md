@@ -1,2 +1,2 @@
 # Visualization
-Scientific Computating and Visualization
+Scientific Computing and Visualization

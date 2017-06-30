@@ -1,2 +1,2 @@
 # Visualization
-2017-18 > Clase #1
+Scientific Computating and Visualization
